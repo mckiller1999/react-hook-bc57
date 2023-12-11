@@ -13,11 +13,16 @@ const ExHookFormik = () => {
     },
     validationSchema: yup.object().shape({
       fullname: yup.string().required("fullname cannot be blank!"),
-      phone: yup.string().required("phone cannot be blank!"),
+      phone: yup
+        .string()
+        .required("phone cannot be blank!")
+        .min(6, "nhiều hơn 6 ký tự")
+        .max(10, "phải bé hơn 10 ký tự"),
       email: yup
         .string()
         .required("email cannot be blank!")
-        .email("email is invalid"),
+        .email("email is invalid")
+        .matches(/abc/, "thiếu chữ abc"),
     }),
     onSubmit: (value) => {
       console.log(value);
