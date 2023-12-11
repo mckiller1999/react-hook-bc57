@@ -1,17 +1,23 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { handleInputProductAction } from "../../../redux/reducers/CRUDProdReducer";
+import {
+  addItemAction,
+  handleInputProductAction,
+} from "../../../redux/reducers/CRUDProdReducer";
 
 const FormProduct = () => {
   const { prodInfo } = useSelector((state) => state.CRUDProdReducer);
   const dispatch = useDispatch();
   const handleChange = (e) => {
     const { id, value } = e.target;
-    const action = handleInputProductAction(id, value);
+    const action = handleInputProductAction({ id, value });
     dispatch(action);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    const payload = prodInfo.value;
+    const action = addItemAction(payload);
+    dispatch(action);
   };
 
   return (
@@ -24,32 +30,34 @@ const FormProduct = () => {
             <input
               className="form-control"
               id="id"
-              value={prodInfo.id}
+              value={prodInfo.value.id}
               onChange={handleChange}
             />
+            <p className="text-danger"></p>
           </div>
           <div className="form-group">
             <p>name</p>
             <input
               className="form-control"
               id="name"
-              value={prodInfo.name}
+              value={prodInfo.value.name}
               onChange={handleChange}
             />
+            <p className="text-danger"></p>
           </div>
           <div className="form-group">
             <p>price</p>
             <input
               className="form-control"
-              value={prodInfo.price}
+              value={prodInfo.value.price}
               id="price"
               onChange={handleChange}
             />
+            <p className="text-danger"></p>
           </div>
         </div>
         <div className="card-footer">
           <button type="submit" className="btn btn-primary">
-            {" "}
             Add product
           </button>
         </div>

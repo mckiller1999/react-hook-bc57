@@ -62,6 +62,18 @@ const Header = () => {
                   {/* <NavLink className="dropdown-item" to="/redux-hook-chat-demo">
                     Chat hook
                   </NavLink> */}
+                  <NavLink
+                    className="dropdown-item"
+                    to="/redux-hook-usecallback"
+                  >
+                    hook useCallbak
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/redux-hook-usememo">
+                    hook useMemo
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/redux-hook-useref">
+                    hook useRef
+                  </NavLink>
                 </div>
               </li>
               <li className="nav-item dropdown">
@@ -87,6 +99,23 @@ const Header = () => {
                   </NavLink>
                   <NavLink className="dropdown-item" to="/redux-hook-form">
                     Demo form redux hook
+                  </NavLink>
+                </div>
+              </li>
+              <li className="nav-item dropdown">
+                <NavLink
+                  className="nav-link dropdown-toggle"
+                  to="#"
+                  id="dropdownId"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  lib hook
+                </NavLink>
+                <div className="dropdown-menu" aria-labelledby="dropdownId">
+                  <NavLink className="dropdown-item" to="/redux-hook-formik">
+                    hook formik
                   </NavLink>
                 </div>
               </li>
