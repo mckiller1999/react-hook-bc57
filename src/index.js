@@ -18,6 +18,13 @@ import HookUseCallBack from "./pages/hooks/ExHookUseCallBack/HookUseCallBack";
 import ExuseMemo from "./pages/hooks/ExUseMemo/ExuseMemo";
 import ExHookUseRef from "./pages/hooks/ExHookUseRef/ExHookUseRef";
 import ExHookFormik from "./pages/hooks/ExHookFormik/ExHookFormik";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import ForgotPassword from "./pages/ForgotPassword";
+import Detail from "./pages/Detail";
+import Search from "./pages/Search";
+import TrangChu from "./pages/TrangChu";
+import AntDemo from "./pages/AntDemo";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -27,6 +34,7 @@ root.render(
         <Route path="" element={<HomeTemplate />}>
           <Route index element={<Home />} />
           <Route path="use-state-demo" element={<UseStateDemo />} />
+
           <Route path="change-profile-use-state" element={<ChangeProfile />} />
           <Route path="use-effect-didmount" element={<UseEffect_Didmount />} />
           <Route
@@ -41,6 +49,16 @@ root.render(
           <Route path="redux-hook-usememo" element={<ExuseMemo />} />
           <Route path="redux-hook-useref" element={<ExHookUseRef />} />
           <Route path="redux-hook-formik" element={<ExHookFormik />} />
+          <Route path="redux-profile" element={<Profile />} />
+          <Route path="redux-forgot" element={<ForgotPassword />} />
+          <Route path="login-demo" element={<Login />} />
+          <Route path="search" element={<Search />} />
+          <Route path="trangchu" element={<TrangChu />} />
+          <Route path="demo-ant" element={<AntDemo />} />
+
+          <Route path="detail">
+            <Route path=":id" element={<Detail />}></Route>
+          </Route>
 
           <Route path="*" element={<Navigate to="" />}></Route>
         </Route>

@@ -27,7 +27,7 @@ const ExHookUseRef = () => {
     e.preventDefault();
     console.log(refLogin.current);
     //ngoài ra ref cũng dùng để dom đến các thẻ tuy nhiên ta có thể quản lý dễ dàng thông qua biến ref trên component đó
-    refdom.current.className = "btn btn-dark";
+    refdom.current.disabled = "true";
   };
 
   return (

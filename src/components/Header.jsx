@@ -20,13 +20,17 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="collapsibleNavId">
             <ul className="navbar-nav me-auto mt-2 mt-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link active" to="" aria-current="page">
+                <NavLink
+                  className="nav-link active"
+                  to="trangchu"
+                  aria-current="page"
+                >
                   Home <span className="visually-hidden">(current)</span>
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="#">
-                  Link
+                <NavLink className="nav-link" to="login-demo">
+                  Login
                 </NavLink>
               </li>
               <li className="nav-item dropdown">
@@ -116,6 +120,9 @@ const Header = () => {
                 <div className="dropdown-menu" aria-labelledby="dropdownId">
                   <NavLink className="dropdown-item" to="/redux-hook-formik">
                     hook formik
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/demo-ant">
+                    demo ant design
                   </NavLink>
                 </div>
               </li>
