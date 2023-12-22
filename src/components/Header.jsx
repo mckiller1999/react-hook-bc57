@@ -124,6 +124,12 @@ const Header = () => {
                   <NavLink className="dropdown-item" to="/demo-ant">
                     demo ant design
                   </NavLink>
+                  <NavLink className="dropdown-item" to="/ant-table">
+                    demo ant table
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/prod-maneger">
+                    product maneger
+                  </NavLink>
                 </div>
               </li>
             </ul>

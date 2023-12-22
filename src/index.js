@@ -25,6 +25,8 @@ import Detail from "./pages/Detail";
 import Search from "./pages/Search";
 import TrangChu from "./pages/TrangChu";
 import AntDemo from "./pages/AntDemo";
+import TableAntd from "./pages/TableAntd";
+import ProductManeger from "./pages/ProductManeger";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -55,6 +57,8 @@ root.render(
           <Route path="search" element={<Search />} />
           <Route path="trangchu" element={<TrangChu />} />
           <Route path="demo-ant" element={<AntDemo />} />
+          <Route path="ant-table" element={<TableAntd />} />
+          <Route path="prod-maneger" element={<ProductManeger />} />
 
           <Route path="detail">
             <Route path=":id" element={<Detail />}></Route>

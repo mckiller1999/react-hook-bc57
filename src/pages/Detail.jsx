@@ -9,22 +9,24 @@ const Detail = () => {
   const params = useParams();
 
   const getProdById = async () => {
-    console.log(params.id);
+    //console.log(params.id);
     const res = await axios({
       url: `https://shop.cyberlearn.vn/api/Product/getbyid?id=${params.id}`,
       method: "GET",
     });
-    setProductDetail(res.data.content);
+
+    return setProductDetail(res.data.content);
   };
   useEffect(() => {
+    //gọi api
     getProdById();
     console.log(productDetail);
-    //gọi api
   }, [params.id]);
   return (
     <div className="container">
       <h3>Detail</h3>
       <p>param:{params.id}</p>
+
       <div className="row">
         <div className="col-4">
           <img src={productDetail.image} alt="" width={250} height={250} />
@@ -32,6 +34,14 @@ const Detail = () => {
         <div className="col-4 ">
           <h3>{productDetail.name}</h3>
           <p>des: {productDetail.shortDescription}</p>
+          {productDetail.size?.map((item, index) => {
+            return (
+              <button key={index} className="btn btn-success m-1">
+                {item}
+              </button>
+            );
+          })}
+
           <button className="btn btn-success">add to cart</button>
         </div>
         <h3 className="text-center">Related Product</h3>
