@@ -4,6 +4,7 @@ import ChatReducer from "./reducers/ChatReducer";
 import FontSizeReducer from "./reducers/FontSizeReducer";
 import CRUDProdReducer from "./reducers/CRUDProdReducer";
 import ProductReducer from "./reducers/ProductReducer";
+import UserReducer from "./reducers/UserReducer";
 export const store = configureStore({
   reducer: {
     //các state của ứng dụng
@@ -11,5 +12,6 @@ export const store = configureStore({
     FontSizeReducer: FontSizeReducer,
     CRUDProdReducer: CRUDProdReducer,
     ProductReducer,
+    userReducer: UserReducer,
   },
 });

@@ -1,6 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const { userLogin } = useSelector((state) => state.userReducer);
+  // console.log(userLogin);
   return (
     <div className="mb-5">
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -29,9 +32,20 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="login-demo">
-                  Login
-                </NavLink>
+                {(() => {
+                  if (userLogin.email != "") {
+                    return (
+                      <NavLink className="nav-link" to="/redux-profile">
+                        Hello {userLogin.email}
+                      </NavLink>
+                    );
+                  }
+                  return (
+                    <NavLink className="nav-link" to="/login-demo">
+                      Login
+                    </NavLink>
+                  );
+                })()}
               </li>
               <li className="nav-item dropdown">
                 <NavLink
