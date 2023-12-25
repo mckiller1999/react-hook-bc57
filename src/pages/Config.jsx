@@ -48,11 +48,13 @@ http.interceptors.response.use(
   },
   (err) => {
     //xử lý khi lỗi
-    console.log(err);
+    //console.log(err);
     if (err.response?.status === 404) {
     } else if (err.response?.status === 404) {
-    } else if (err.response?.status === 404) {
-    } else if (err.response?.status === 404) {
+    } else if (err.response?.status === 401) {
+      alert("đăng nhập để vào profile");
+      window.location.href = "/login-demo";
+    } else if (err.response?.status === 403) {
     }
   }
 );
