@@ -31,6 +31,9 @@ const Search = () => {
   };
 
   useEffect(() => {
+    // if (tukhoa === "") {
+    //   tukhoa = searchParams.get("keyword");
+    // }
     getProdByKeyword();
   }, [tukhoa]);
   return (
@@ -42,6 +45,7 @@ const Search = () => {
           </span>
           <div className="form-floating">
             <input
+              value={tukhoa}
               type="text"
               className="form-control"
               id="keyword"

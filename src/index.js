@@ -1,6 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  unstable_HistoryRouter as HistoryRouter,
+} from "react-router-dom";
 import HomeTemplate from "./templates/HomeTemplate";
 import Home from "./pages/Home";
 //cấu hình redux
@@ -23,15 +29,23 @@ import Profile from "./pages/Profile";
 import ForgotPassword from "./pages/ForgotPassword";
 import Detail from "./pages/Detail";
 import Search from "./pages/Search";
+import Register from "./pages/Register";
+
 import TrangChu from "./pages/TrangChu";
 import AntDemo from "./pages/AntDemo";
 import TableAntd from "./pages/TableAntd";
 import ProductManeger from "./pages/ProductManeger";
+//cấu hình chuyển hướng trang thông qua history
+import { createBrowserHistory } from "history";
+import DemoHOC from "./HOC/DemoHOC";
+import DemoContainer from "./HOC/ContainerComponent/DemoContainer";
+
+export const history = createBrowserHistory();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Routes>
         <Route path="" element={<HomeTemplate />}>
           <Route index element={<Home />} />
@@ -59,6 +73,9 @@ root.render(
           <Route path="demo-ant" element={<AntDemo />} />
           <Route path="ant-table" element={<TableAntd />} />
           <Route path="prod-maneger" element={<ProductManeger />} />
+          <Route path="hoc" element={<DemoHOC />} />
+          <Route path="register" element={<Register />} />
+          <Route path="hoc-container" element={<DemoContainer />} />
 
           <Route path="detail">
             <Route path=":id" element={<Detail />}></Route>
@@ -67,6 +84,6 @@ root.render(
           <Route path="*" element={<Navigate to="" />}></Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   </Provider>
 );

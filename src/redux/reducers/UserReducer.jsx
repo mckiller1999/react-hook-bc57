@@ -51,8 +51,8 @@
 // };
 
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { TOKEN, USER_LOGIN, http } from "../../pages/Config";
+import { TOKEN, USER_LOGIN, http } from "../../util/Config";
+import { history } from "../../index";
 
 //
 
@@ -92,17 +92,19 @@ export const loginApiAction = (userLogin) => {
   return async (dispatch) => {
     //call api
     try {
-      const res = await http.post("/Users/singin", userLogin);
+      const res = await http.post("Users/signin", userLogin);
+
       //Sau khi lấy được token thì lưu vào local storage
       localStorage.setItem(TOKEN, res.data.content.accessToken);
       localStorage.setItem(USER_LOGIN, JSON.stringify(res.data.content));
       //Gửi dữ liệu sau khi thành công vào reducer
       const action = loginAction(res.data.content);
       dispatch(action);
+      history.push("/redux-profile");
     } catch (err) {
       if (err.response?.status === 404) {
         alert("Tài khoản hoặc mật khẩu sai");
-        window.location.href = "/";
+        // window.location.href = "/";
       }
     }
   };
@@ -125,9 +127,11 @@ export const loginApiAction = (userLogin) => {
 
 export const getProfileApiAction = () => {
   return async (dispatch) => {
-    const res = await http.post("/Users/getProfile");
-    //Sau khi có được dữ liệu thì dispatch lên reducer
-    const action = getProfileAction(res.data.content);
-    dispatch(action);
+    try {
+      const res = await http.post("/Users/getProfile");
+      //Sau khi có được dữ liệu thì dispatch lên reducer
+      const action = getProfileAction(res.data.content);
+      dispatch(action);
+    } catch (err) {}
   };
 };

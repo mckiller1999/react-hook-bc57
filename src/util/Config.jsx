@@ -1,4 +1,5 @@
 import axios from "axios";
+import { history } from "../index";
 export const USER_LOGIN = "userLogin";
 export const TOKEN = "accessToken";
 
@@ -50,11 +51,12 @@ http.interceptors.response.use(
     //xử lý khi lỗi
     //console.log(err);
     if (err.response?.status === 404) {
-    } else if (err.response?.status === 404) {
     } else if (err.response?.status === 401) {
       alert("đăng nhập để vào profile");
-      window.location.href = "/login-demo";
+      //window.location.href = "/login-demo";
+      history.push("/login-demo");
     } else if (err.response?.status === 403) {
     }
+    return Promise.reject(err);
   }
 );

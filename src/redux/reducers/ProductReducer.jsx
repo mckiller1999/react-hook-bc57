@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //createAsyncThunk dùng cho cách 2(extraReducer)
 import axios from "axios";
-import { http } from "../../pages/Config";
+import { http } from "../../util/Config";
 
 const initialState = {
   arrProduct: [],

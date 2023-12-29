@@ -1,8 +1,25 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useFormik } from "formik";
+import { history } from "../index";
 const Header = () => {
+  //const { searchParam, setSearchParam } = useSearchParams();
+
   const { userLogin } = useSelector((state) => state.userReducer);
+  const frm = useFormik({
+    initialValues: {
+      keyword: "",
+    },
+    onSubmit: ({ keyword }) => {
+      history.push(`/search?keyword=${keyword}`);
+      //console.log(keyword);
+      //đưa keyword lên url
+      // setSearchParam({
+      //   keyword,
+      // });
+    },
+  });
   // console.log(userLogin);
   return (
     <div className="mb-5">
@@ -32,19 +49,39 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink
+                  className="nav-link active"
+                  to="hoc"
+                  aria-current="page"
+                >
+                  HOC <span className="visually-hidden">(current)</span>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link active"
+                  to="hoc-container"
+                  aria-current="page"
+                >
+                  Container
+                  <span className="visually-hidden">(current)</span>
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 {(() => {
-                  if (userLogin.email != "") {
+                  //console.log(userLogin.email);
+                  if (userLogin.email !== "") {
                     return (
                       <NavLink className="nav-link" to="/redux-profile">
                         Hello {userLogin.email}
                       </NavLink>
                     );
-                  }
-                  return (
-                    <NavLink className="nav-link" to="/login-demo">
-                      Login
-                    </NavLink>
-                  );
+                  } else
+                    return (
+                      <NavLink className="nav-link" to="/login-demo">
+                        Login
+                      </NavLink>
+                    );
                 })()}
               </li>
               <li className="nav-item dropdown">
@@ -147,8 +184,10 @@ const Header = () => {
                 </div>
               </li>
             </ul>
-            <form className="d-flex my-2 my-lg-0">
+            <form onSubmit={frm.handleSubmit} className="d-flex my-2 my-lg-0">
               <input
+                name="keyword"
+                onChange={frm.handleChange}
                 className="form-control me-sm-2"
                 type="text"
                 placeholder="Search"

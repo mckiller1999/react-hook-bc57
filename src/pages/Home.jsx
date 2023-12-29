@@ -22,11 +22,15 @@ const Home = () => {
         {arrProduct.map((prod, index) => {
           return (
             <div className="col-4" key={index}>
-              <div class="card ">
-                <img class="card-img-top" src={prod.image} alt={prod.name} />
-                <div class="card-body">
-                  <h4 class="card-title">{prod.name}</h4>
-                  <p class="card-text">{prod.price}</p>
+              <div className="card ">
+                <img
+                  className="card-img-top"
+                  src={prod.image}
+                  alt={prod.name}
+                />
+                <div className="card-body">
+                  <h4 className="card-title">{prod.name}</h4>
+                  <p className="card-text">{prod.price}</p>
                   <NavLink className="btn btn-dark" to={`/detail/${prod.id}`}>
                     View detail
                   </NavLink>
