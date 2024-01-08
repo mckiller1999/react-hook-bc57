@@ -68,6 +68,16 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink
+                  className="nav-link active"
+                  to="test-drawer"
+                  aria-current="page"
+                >
+                  Test Drawer
+                  <span className="visually-hidden">(current)</span>
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 {(() => {
                   //console.log(userLogin.email);
                   if (userLogin.email !== "") {

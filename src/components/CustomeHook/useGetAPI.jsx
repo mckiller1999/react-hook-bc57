@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 const useGetAPI = (url) => {
   const [data, setData] = useState({});
   const getAPI = async () => {
-    const res = await Axios({
+    const res = await axios({
       url: url,
       method: "GET",
     });

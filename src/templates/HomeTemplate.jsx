@@ -1,6 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
+import DeviceTemplate from "./DeviceTemplate";
+import BottomTab from "../components/BottomTab";
 const HomeTemplate = () => {
   return (
     <div>
@@ -8,9 +10,14 @@ const HomeTemplate = () => {
       <div className="content" style={{ minHeight: "80vh" }}>
         <Outlet />
       </div>
-      <footer className="p-5 bg-dark text-white text-center">
-        <h3>footer</h3>
-      </footer>
+      <DeviceTemplate
+        Component={
+          <footer className="p-5 bg-dark text-white text-center">
+            <h3>footer</h3>
+          </footer>
+        }
+        MobileComponent={<BottomTab />}
+      />
     </div>
   );
 };

@@ -9,7 +9,7 @@ const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [arrProduct, setarrProduct] = useState([]);
   const tukhoa = searchParams.get("keyword");
-  console.log(arrProduct);
+  //console.log(arrProduct);
   const formSearch = useFormik({
     initialValues: {
       keyword: "",

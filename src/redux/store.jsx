@@ -5,6 +5,7 @@ import FontSizeReducer from "./reducers/FontSizeReducer";
 import CRUDProdReducer from "./reducers/CRUDProdReducer";
 import ProductReducer from "./reducers/ProductReducer";
 import UserReducer from "./reducers/UserReducer";
+import DrawerReducer from "./reducers/DrawerReducer";
 export const store = configureStore({
   reducer: {
     //các state của ứng dụng
@@ -13,5 +14,6 @@ export const store = configureStore({
     CRUDProdReducer: CRUDProdReducer,
     ProductReducer,
     userReducer: UserReducer,
+    drawerReducer: DrawerReducer,
   },
 });

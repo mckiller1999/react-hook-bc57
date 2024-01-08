@@ -39,6 +39,10 @@ import ProductManeger from "./pages/ProductManeger";
 import { createBrowserHistory } from "history";
 import DemoHOC from "./HOC/DemoHOC";
 import DemoContainer from "./HOC/ContainerComponent/DemoContainer";
+import DrawerComponent from "./HOC/DrawerComponent/DrawerComponent";
+import DemoTestDrawer from "./HOC/DrawerComponent/DemoTestDrawer";
+import DeviceTemplate from "./templates/DeviceTemplate";
+import HomeMobile from "./pages/HomeMobile";
 
 export const history = createBrowserHistory();
 
@@ -46,9 +50,18 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <HistoryRouter history={history}>
+      <DrawerComponent />
       <Routes>
         <Route path="" element={<HomeTemplate />}>
-          <Route index element={<Home />} />
+          <Route
+            index
+            element={
+              <DeviceTemplate
+                Component={<Home />}
+                MobileComponent={<HomeMobile />}
+              />
+            }
+          ></Route>
           <Route path="use-state-demo" element={<UseStateDemo />} />
 
           <Route path="change-profile-use-state" element={<ChangeProfile />} />
@@ -76,6 +89,7 @@ root.render(
           <Route path="hoc" element={<DemoHOC />} />
           <Route path="register" element={<Register />} />
           <Route path="hoc-container" element={<DemoContainer />} />
+          <Route path="test-drawer" element={<DemoTestDrawer />} />
 
           <Route path="detail">
             <Route path=":id" element={<Detail />}></Route>

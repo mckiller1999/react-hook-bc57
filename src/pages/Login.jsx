@@ -51,12 +51,13 @@
 
 // export default Login;
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { loginApiAction } from "../redux/reducers/UserReducer";
 import { useDispatch } from "react-redux";
+import { updateOnOkAction } from "../redux/reducers/DrawerReducer";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -70,6 +71,10 @@ const Login = () => {
       dispatch(action);
     },
   });
+  useEffect(() => {
+    const action = updateOnOkAction(frmLogin.handleSubmit);
+    dispatch(action);
+  }, []);
   return (
     <form onSubmit={frmLogin.handleSubmit} className="container">
       <h3>Login</h3>

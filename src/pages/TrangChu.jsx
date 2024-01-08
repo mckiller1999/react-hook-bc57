@@ -13,7 +13,7 @@ const TrangChu = () => {
       <div className="row">
         {arrProduct?.map((prod, index) => {
           return (
-            <div className="col-4" key={index}>
+            <div className="col-md-4" key={index}>
               <div class="card ">
                 <img class="card-img-top" src={prod.image} alt={prod.name} />
                 <div class="card-body">
