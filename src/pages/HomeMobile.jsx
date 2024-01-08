@@ -5,7 +5,7 @@
 // const HomeMobile = (props) => {
 //   console.log(props);
 //   const [arrProduct, setArrProduct] = useState([]);
-//   console.error("arrProduct", arrProduct);
+//   //console.error("arrProduct", arrProduct);
 //   const getAllProductApi = async () => {
 //     const res = await axios({
 //       url: "https://shop.cyberlearn.vn/api/Product",
@@ -50,7 +50,7 @@ import { NavLink } from "react-router-dom";
 const HomeMobile = (props) => {
   console.log(props);
   const [arrProduct, setArrProduct] = useState([]);
-  console.error("arrProduct", arrProduct);
+  //console.error("arrProduct", arrProduct);
   const getAllProductApi = async () => {
     const res = await axios({
       url: "https://shop.cyberlearn.vn/api/Product",
@@ -87,10 +87,10 @@ const HomeMobile = (props) => {
                     <p>{prod.description}</p>
                   </div>
                   <div className="text-end">
-                    <button className="btn btn-dark">
+                    <NavLink className="btn btn-dark" to={`/detail/${prod.id}`}>
                       <i className="fa fa-cart-plus p-2"></i>
                       View detail
-                    </button>
+                    </NavLink>
                   </div>
                 </div>
               </div>

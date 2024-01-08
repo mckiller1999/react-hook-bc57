@@ -6,17 +6,31 @@ const DeviceTemplate = (props) => {
     width: window.innerWidth,
   });
   const [Component, setComponent] = useState(props.Component);
+  // const changeSize = () => {
+  //   setScreen({
+  //     width: window.innerWidth,
+  //   });
+  // };
+  // useEffect(() => {
+  //   window.onload = changeSize;
+  //   window.onresize = changeSize;
+  //   return () => {
+  //     window.removeEventListener("onload", changeSize);
+  //     window.removeEventListener("onresize", changeSize);
+  //   };
+  // }, []);
   const changeSize = () => {
     setScreen({
       width: window.innerWidth,
     });
   };
   useEffect(() => {
-    window.onload = changeSize;
-    window.onresize = changeSize;
+    window.addEventListener("load", changeSize);
+    window.addEventListener("resize", changeSize);
+
     return () => {
-      window.removeEventListener("onload", changeSize);
-      window.removeEventListener("onresize", changeSize);
+      window.removeEventListener("load", changeSize);
+      window.removeEventListener("resize", changeSize);
     };
   }, []);
   useEffect(() => {
@@ -63,4 +77,33 @@ export default DeviceTemplate;
 //   }, [screen.width]);
 //   return <>{Component}</>;
 // };
+// export default DeviceTemplate;
+
+// const DeviceTemplate = (props) => {
+//   const [screen, setScreen] = useState({
+//     width: window.innerWidth,
+//   });
+
+//   const changeSize = () => {
+//     setScreen({
+//       width: window.innerWidth,
+//     });
+//   };
+
+//   useEffect(() => {
+//     window.addEventListener("load", changeSize);
+//     window.addEventListener("resize", changeSize);
+
+//     return () => {
+//       window.removeEventListener("load", changeSize);
+//       window.removeEventListener("resize", changeSize);
+//     };
+//   }, []);
+
+//   const ComponentToRender =
+//     screen.width < 768 ? props.MobileComponent : props.Component;
+
+//   return <div>{ComponentToRender}</div>;
+// };
+
 // export default DeviceTemplate;
